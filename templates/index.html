@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Value your Car!</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+            crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300&display=swap"
+            rel="stylesheet">
+        <style>
+            body{
+                background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Mahindra_Thar_Photoshoot_At_Perupalem_Beach_%28West_Godavari_District%2CAP%2CIndia_%29_Djdavid.jpg/1280px-Mahindra_Thar_Photoshoot_At_Perupalem_Beach_%28West_Godavari_District%2CAP%2CIndia_%29_Djdavid.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                opacity: 0.9;
+            }
+            .logo{
+                font-family: 'Pacifico', cursive;
+            }
+            .text{
+                font-family: 'Kantumruy Pro', sans-serif;
+            }
+            .final{
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            }
+
+            @media (max-width: 900px) {
+                body {
+                    background-color: black;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- As a link -->
+        <nav class="navbar navbar-dark bg-dark text-white">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="#"><h2 class="d-inline m-2">🚗</h2>Car
+                    Value</a>
+            </div>
+        </nav>
+
+        <div class="border d-inline-block p-5 w-50 mt-5 m-4 shadow p-3 mb-5
+            bg-body rounded">
+            <h3 class="logo pb-4">Know Value of your Car!</h3>
+            <div class="d-flex flex-row m-2 text">
+                <form action="{{ url_for('predict')}}" method="post">
+                    <p>Year</p>
+                    <input id="first" name="Year" type="number"><br><br>
+                    <p>What is the Showroom Price? (In lakhs)</p>
+                    <input id="second" name="Present_Price" required="required"><br><br>
+                    <p>How Many Kilometers Drived?</p>
+                    <input id="third" name="Kms_Driven" required="required">
+                    <br><br>
+                    <p>Type of Ownership (0,1,2..)</p>
+                    <input id="fourth" name="Owner" required="required"> <br><br>
+                    <p>Fuel type</p><select
+                        name="Fuel_Type_Petrol" id="fuel" required="required">
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Diesel">CNG</option>
+                    </select><br><br>
+                    <p>Are you a Dealer or Individual?</p><select
+                        name="Seller_Type_Individual" id="resea"
+                        required="required">
+                        <option value="Dealer">Dealer</option>
+                        <option value="Individual">Individual</option>
+                    </select><br><br>
+                    <p>Transmission type</p><select
+                        name="Transmission_Mannual" id="research"
+                        required="required">
+                        <option value="Mannual">Manual Car</option>
+                        <option value="Automatic">Automatic Car</option>
+                    </select><br><br>
+                    <button id="sub" class="btn btn-dark mt-3" type="submit">Calculate
+                        the
+                        Selling
+                        Price</button>
+                    <br>
+                </form>
+            </div>
+            <h3 class="d-inline-block text mt-5 mx-2 border p-2 bg-dark
+                text-white final rounded">{{ prediction_text }}<h3></h3>
+            </div>
+
+
+
+
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+                crossorigin="anonymous"></script>
+        </body>
+
+    </html>
